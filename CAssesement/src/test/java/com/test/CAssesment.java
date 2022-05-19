@@ -1,6 +1,7 @@
 package com.test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -28,20 +29,20 @@ public class CAssesment {
 	      
 	      //find hotel
 	      
-	      Thread.sleep(5000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      //click on Find hotel button
 	      driver.findElement(By.xpath("//form[@action='/search/submitSearch.mi'] //button[@type='submit']")).click();
 	      //get the destination sapce to put some value
 	      WebElement destination=driver.findElement(By.xpath("(//input[@placeholder='Where do you want to go?'])[2]"));
-	      Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      //send values for destination
 	      destination.sendKeys("Bang");
-	      Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      //select the second location from top
 	      destination.sendKeys(Keys.ARROW_DOWN);
 	      //press enter after selecting the destination
 	      destination.sendKeys(Keys.ENTER);
-	      Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      //click on date to select date
           driver.findElement(By.xpath("//div[@data-takeover-label='Dates'] //input[contains(@id,'hotel-fromDate')]")).click();
       
@@ -113,14 +114,14 @@ public class CAssesment {
       Thread.sleep(2000);
       //click on join in
       a.moveToElement(driver.findElement(By.xpath("//a[@data-description='Join']"))).click().build().perform();
-      Thread.sleep(2000);
+      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       //fill first name
       driver.findElement(By.id("field-first-name")).sendKeys("Anuj");
       //fill last name
       driver.findElement(By.id("field-last-name")).sendKeys("Singh");
-      Thread.sleep(2000);
+      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       a.moveToElement(driver.findElement(By.className("selectric"))).click().build().perform();
-      Thread.sleep(2000);
+      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       //get the list to select countries
       List<WebElement> allProduct = driver.findElements(By.xpath("//li[@role='option']"));
 		
@@ -131,7 +132,7 @@ public class CAssesment {
 				break;
 			}
 		}
-	  Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	  //enter email
       driver.findElement(By.id("field-email")).sendKeys("Singh@email.com");
       //enter password
@@ -148,7 +149,7 @@ public class CAssesment {
     	  //enter value
     	  (driver.findElement(By.id("field-telephone-number"))).sendKeys("342345");
       }
-      Thread.sleep(2000);
+      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       //select the checkboxes
       driver.findElement(By.id("field-email-promotional-opt-in")).click();
       driver.findElement(By.id("field-email-third-party-opt-in")).click();
@@ -167,7 +168,7 @@ public class CAssesment {
 	      a.moveToElement(driver.findElement(By.className("m-header__container"))).click().build().perform();
 	      //click on my trip
 	      driver.findElement(By.xpath("(//a[@data-dialog-id='m-header-mytrip-dialog-header'])[2]")).click();
-	      Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      //enter number in trip window
 	      driver.findElement(By.xpath("//input[@id='confirmationNumber']")).click();
 	      driver.findElement(By.xpath("//input[@id='confirmationNumber']")).sendKeys("765765");
@@ -185,17 +186,17 @@ public class CAssesment {
 	      driver.findElement(By.id("firstName")).sendKeys("John");
 	      driver.findElement(By.id("lastName")).click();
 	      driver.findElement(By.id("lastName")).sendKeys("Michael");
-	      Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      driver.findElement(By.id("find-reservaton")).click();
 	      
 	      
 	      driver.findElement(By.id("fName")).sendKeys("John");
 	      driver.findElement(By.id("lName")).sendKeys("Michael");
 	      driver.findElement(By.id("cfNumber")).sendKeys("234234");
-	      Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      WebElement cin2=driver.findElement(By.xpath("//input[@id='cInDates']"));
 	      cin2.click();
-        Thread.sleep(2000);
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         cin2.click();
 	      List<WebElement>cinDates2=cin2.findElements(By.xpath("//div[@role='gridcell']"));
 	      for(WebElement dee: cinDates2) {
@@ -205,6 +206,7 @@ public class CAssesment {
 	    	  }
 	      }
 	      driver.findElement(By.id("lookup-submit-btn")).click();
+	      driver.close();
 	}
 
 	}
